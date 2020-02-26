@@ -27,7 +27,8 @@
 #define GPIO_PIN6 0x40
 #define GPIO_PIN7 0x80
 
-
+#define MODE_OUTPUT HIGH
+#define MODE_INPUT LOW
 
 Error_Status GPIO_Init(u8 Port,u8 Pin,u8 Direction);
 Error_Status GPIO_WritePin(u8 Port,u8 Pin,u8 Value);

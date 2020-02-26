@@ -12,7 +12,7 @@
 
 #define SALOON_LAMP 	0
 #define SALOON_PORT 	GPIO_PORTA
-#define SALOON_PIN 		GPIO_PIN0
+#define SALOON_PIN 		GPIO_PIN4
 
 /* lamp_CH options:
 		1. SALOON_LAMP

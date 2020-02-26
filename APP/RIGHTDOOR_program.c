@@ -1,4 +1,5 @@
-#include "STD_TYPES"
+#include "../Components/STD_TYPES.h"
+
 #include "RIGHTDOOR_interface.h"
 
 Error_Status RightDoor_Int(void){

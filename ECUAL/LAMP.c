@@ -1,4 +1,5 @@
-#include "STD_TYPES.h"
+#include "../Components/STD_TYPES.h"
+#include "../MCAL/GPIO_interface.h"
 #include "LAMP.h"
 
 /* lamp_CH options:
@@ -7,7 +8,7 @@
 
 Error_Status Lamp_Init (u8 lamp_CH)
 {
-	u8 Error_Status = STD_ERR_NOK;
+	u8 Error_Status = STD_ERR_NOT_OK;
 	if(lamp_CH < NUM_OF_LAMPS)
 	{
 		switch(lamp_CH)
@@ -29,10 +30,10 @@ Error_Status Lamp_Init (u8 lamp_CH)
 */   
 Error_Status Lamp_update (u8 lamp_CH , u8 lamp_status)
 {
-	u8 Error_Status = E_NOK;
-	if(LAMP_CH < NUM_OF_LAMPS)
+	u8 Error_Status = STD_ERR_NOT_OK;
+	if(lamp_CH < NUM_OF_LAMPS)
 	{
-		switch(LAMP_CH)
+		switch(lamp_CH)
 		{
 			case SALOON_LAMP:
 				Error_Status = GPIO_WritePin(SALOON_PORT, SALOON_PIN, lamp_status);

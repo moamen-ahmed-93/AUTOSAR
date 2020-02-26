@@ -1,0 +1,1 @@
+"./main.obj" "./tm4c123gh6pm_startup_ccs.obj" "./APP/LEFTDOOR_program.obj" "./APP/LIGHT_program.obj" "./APP/RIGHTDOOR_program.obj" "./ECUAL/DoorSensing_pogram.obj" "./ECUAL/LAMP.obj" "./MCAL/GPIO_program.obj" "./MCAL/RCC_program.obj" "../tm4c123gh6pm.cmd" -llibc.a 

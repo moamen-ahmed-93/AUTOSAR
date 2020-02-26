@@ -19,4 +19,7 @@ typedef u8 Error_Status;
 #define STD_ERR_OK 1
 #define STD_ERR_NOT_OK 0
 
+#define HIGH 1
+#define LOW 0
+
 #endif
