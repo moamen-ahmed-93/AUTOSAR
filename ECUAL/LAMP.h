@@ -14,5 +14,9 @@
 #define SALOON_PORT GPIO_PORTA
 #define SALOON_PIN 	GPIO_PIN0
 
+#define LAMP_ON   1
+#define LAMP_OFF  0
+
 
 Error_Status Lamp_Init (u8 ID);
+Error_Status Lamp_update (u8 lamp_ch , u8 lamp_status);
