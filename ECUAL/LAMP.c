@@ -9,7 +9,7 @@
 Error_Status Lamp_Init (u8 lamp_CH)
 {
 	u8 Error_Status = STD_ERR_NOT_OK;
-	if(lamp_CH < NUM_OF_LAMPS)
+	if(lamp_CH < 0x11)
 	{
 		switch(lamp_CH)
 		{

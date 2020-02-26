@@ -29,6 +29,7 @@ Error_Status GPIO_Init(u8 Port,u8 Pin,u8 Direction){
 			err=STD_ERR_NOT_OK;
 			break;
 	}
+	return err;
 }
 Error_Status GPIO_WritePin(u8 Port,u8 Pin,u8 Value){
 	Error_Status err = STD_ERR_OK;
@@ -56,13 +57,13 @@ Error_Status GPIO_WritePin(u8 Port,u8 Pin,u8 Value){
 			err=STD_ERR_NOT_OK;
 			break;
 	}
-
+	return err;
 }
 Error_Status GPIO_ReadPin(u8 Port,u8 Pin,u8 *Value){
 	Error_Status err = STD_ERR_OK;
 	switch(Port){
 		case GPIO_PORTA:
-			*Value=GPIOA_DATA|Pin;
+			*Value=GPIOA_DATA&Pin;
 			if(*Value>0)
 				*Value=1;
 			break;
@@ -80,4 +81,5 @@ Error_Status GPIO_ReadPin(u8 Port,u8 Pin,u8 *Value){
 			err=STD_ERR_NOT_OK;
 			break;
 	}
+	return err;
 }

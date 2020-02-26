@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v18.12.4                    
 ******************************************************************************
->> Linked Wed Feb 26 14:14:47 2020
+>> Linked Wed Feb 26 14:55:33 2020
 
 OUTPUT FILE NAME:   <AUTOSAR.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000431
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 0000063d
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  0000048e  0003fb72  R  X
+  FLASH                 00000000   00040000  0000067c  0003f984  R  X
   SRAM                  20000000   00008000  00000200  00007e00  RW X
 
 
@@ -19,9 +19,9 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    0000048e   0000048e    r-x
+00000000    00000000    0000067c   0000067c    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000222   00000222    r-x .text
+  0000026c    0000026c    00000410   00000410    r-x .text
 20000000    20000000    00000200   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
 
@@ -34,14 +34,19 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00000222     
-                  0000026c    00000164     GPIO_program.obj (.text)
-                  000003d0    00000060     RCC_program.obj (.text)
-                  00000430    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
-                  0000045c    0000001e     main.obj (.text)
-                  0000047a    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00000486    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  0000048a    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    0000026c    00000410     
+                  0000026c    00000170     GPIO_program.obj (.text)
+                  000003dc    000000b0     DoorSensing_pogram.obj (.text)
+                  0000048c    0000007c     LAMP.obj (.text)
+                  00000508    00000060     RCC_program.obj (.text)
+                  00000568    0000004e     LIGHT_program.obj (.text)
+                  000005b6    00000044     LEFTDOOR_program.obj (.text)
+                  000005fa    00000040     main.obj (.text)
+                  0000063a    00000002     --HOLE-- [fill = 0]
+                  0000063c    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000668    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000674    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000678    00000004                                   : exit.c.obj (.text:abort:abort)
 
 .cinit     0    00000000    00000000     UNINITIALIZED
 
@@ -58,15 +63,27 @@ MODULE SUMMARY
        ------                         ----   -------   -------
     .\
        tm4c123gh6pm_startup_ccs.obj   12     620       0      
-       main.obj                       30     0         0      
+       main.obj                       64     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         42     620       0      
+       Total:                         76     620       0      
+                                                              
+    .\APP\
+       LIGHT_program.obj              78     0         0      
+       LEFTDOOR_program.obj           68     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         146    0         0      
+                                                              
+    .\ECUAL\
+       DoorSensing_pogram.obj         176    0         0      
+       LAMP.obj                       124    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         300    0         0      
                                                               
     .\MCAL\
-       GPIO_program.obj               356    0         0      
+       GPIO_program.obj               368    0         0      
        RCC_program.obj                96     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         452    0         0      
+       Total:                         464    0         0      
                                                               
     C:\ti\ccs930\ccs\tools\compiler\ti-cgt-arm_18.12.4.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        boot_cortex_m.c.obj            44     0         0      
@@ -77,19 +94,27 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         512    
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   546    620       512    
+       Grand Total:                   1038   620       512    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                  
 -------   ----                  
-0000048b  C$$EXIT               
+00000679  C$$EXIT               
+000003dd  DoorSensor_Init       
+00000427  DoorSensor_ReadStatus 
 0000026d  GPIO_Init             
-00000365  GPIO_ReadPin          
-000002ef  GPIO_WritePin         
-000003d1  RCC_EnablePort        
-0000047b  ResetISR              
+0000036d  GPIO_ReadPin          
+000002f3  GPIO_WritePin         
+0000048d  Lamp_Init             
+000004cf  Lamp_update           
+000005cf  LeftDoor_GetStatus    
+000005b7  LeftDoor_Int          
+00000581  Lighting_Control      
+00000569  Lighting_Int          
+00000509  RCC_EnablePort        
+00000669  ResetISR              
 20000200  __STACK_END           
 00000200  __STACK_SIZE          
 20000200  __STACK_TOP           
@@ -101,12 +126,12 @@ ffffffff  __binit__
 ffffffff  __c_args__            
 UNDEFED   __mpu_init            
 20000000  __stack               
-00000431  _c_int00_noinit_noargs
-00000487  _system_pre_init      
-0000048b  abort                 
+0000063d  _c_int00_noinit_noargs
+00000675  _system_pre_init      
+00000679  abort                 
 ffffffff  binit                 
 00000000  g_pfnVectors          
-0000045d  main                  
+000005fb  main                  
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -117,15 +142,23 @@ address   name
 00000000  g_pfnVectors          
 00000200  __STACK_SIZE          
 0000026d  GPIO_Init             
-000002ef  GPIO_WritePin         
-00000365  GPIO_ReadPin          
-000003d1  RCC_EnablePort        
-00000431  _c_int00_noinit_noargs
-0000045d  main                  
-0000047b  ResetISR              
-00000487  _system_pre_init      
-0000048b  C$$EXIT               
-0000048b  abort                 
+000002f3  GPIO_WritePin         
+0000036d  GPIO_ReadPin          
+000003dd  DoorSensor_Init       
+00000427  DoorSensor_ReadStatus 
+0000048d  Lamp_Init             
+000004cf  Lamp_update           
+00000509  RCC_EnablePort        
+00000569  Lighting_Int          
+00000581  Lighting_Control      
+000005b7  LeftDoor_Int          
+000005cf  LeftDoor_GetStatus    
+000005fb  main                  
+0000063d  _c_int00_noinit_noargs
+00000669  ResetISR              
+00000675  _system_pre_init      
+00000679  C$$EXIT               
+00000679  abort                 
 20000000  __stack               
 20000200  __STACK_END           
 20000200  __STACK_TOP           
@@ -137,4 +170,4 @@ ffffffff  __c_args__
 ffffffff  binit                 
 UNDEFED   __mpu_init            
 
-[23 symbols]
+[31 symbols]

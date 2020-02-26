@@ -8,8 +8,17 @@
 #include "APP/LIGHT_interface.h"
 
 int main(void) {
+    Error_Status e=STD_ERR_OK;
+    u8 door=0;
     RCC_EnablePort(RCC_PORTA);
-    GPIO_Init(GPIO_PORTA, GPIO_PIN4, 1);
-    GPIO_WritePin(GPIO_PORTA, GPIO_PIN4, 1);
-    while(1);
+    Lighting_Int();
+    LeftDoor_Int();
+    while(1){
+        e=LeftDoor_GetStatus(&door);
+       if(door==1)
+           Lighting_Control(1);
+       else
+           Lighting_Control(0);
+
+    }
 }
