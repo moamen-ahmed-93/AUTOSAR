@@ -8,17 +8,49 @@
 #include "APP/LIGHT_interface.h"
 
 int main(void) {
-    Error_Status e=STD_ERR_OK;
-    u8 door=0;
-    RCC_EnablePort(RCC_PORTA);
-    Lighting_Int();
-    LeftDoor_Int();
-    while(1){
-        e=LeftDoor_GetStatus(&door);
-       if(door==1)
-           Lighting_Control(1);
-       else
-           Lighting_Control(0);
+    u8 Loc_Error = 0 ;
+    u8 RightDoorStatus ;
+    u8 LeftDoorStatus ;
+
+    if(!Loc_Error)
+    {
+        Loc_Error=LeftDoor_Int();
+    }
+    if(!Loc_Error)
+    {
+        Loc_Error=RightDoor_Int();
+    }
+    if(!Loc_Error)
+    {
+        Loc_Error=Lighting_Int();
+    }
+    if(!Loc_Error)
+    {
+        Loc_Error=Lighting_Control(LIGHT_OFF_STATE);
+    }
+
+    while(1)
+    {
+        if(!Loc_Error)
+        {
+            Loc_Error=LeftDoor_GetStatus(&LeftDoorStatus);
+        }
+        if(!Loc_Error)
+        {
+            Loc_Error=RightDoor_GetStatus(&RightDoorStatus);
+        }
+        if(!( LeftDoorStatus&&RightDoorStatus ))
+        {
+            if(!Loc_Error)
+                Loc_Error=Lighting_Control(LIGHT_ON_STATE);
+        }
+        else
+        {
+            if(!Loc_Error)
+                Loc_Error=Lighting_Control(LIGHT_OFF_STATE);
+        }
+
+
 
     }
 }
