@@ -47,7 +47,7 @@ Error_Status DoorSensor_Init(u8 Door);
 Error_Status DoorSensor_ReadStatus(u8 sensor_Ch, u8* Status);
 
 
-/* DoorSensor_1 Mapping */
+/* DoorSensor_1 Mapping */   
 #define DOORSENSOR1_PORT   GPIO_PORTA
 #define DOORSENSOR1_PIN     GPIO_PIN2
 #define DOORSENSOR1_MODE    MODE_INPUT
