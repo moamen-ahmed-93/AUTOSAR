@@ -38,7 +38,9 @@ Error_Status DoorSensor_Init(u8 Door);
  *                     Description: Status Of the Sensor
  *
  *              Output: NA
- *              In/out: NA
+ *              In/out:  Status
+ *                     type: Pointer To u8
+ *                     Description: Status to be read from the Sensor
  * return: E_OK, E_NOK
  * Description: a function to read the status of the sensor according to Channel 
  ***************************************************************************/
