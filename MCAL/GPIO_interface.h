@@ -83,7 +83,7 @@ Error_Status GPIO_WritePin(u8 Port,u8 Pin,u8 Value);
  *                Port
  *                     type: u8
                         Description: GPIO port number (PORTA,PORTB,PORTC,PORTD)
- *                 Pin
+ *                 Pin  
  *                     type: u8
  *                     Description: GPIO pin number (PIN0 .. PIN7)
  *
